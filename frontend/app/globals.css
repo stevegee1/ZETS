@@ -1,0 +1,223 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── GOV.UK-inspired plain design system ── */
+:root {
+  --bg: #ffffff;
+  --surface: #f3f2f1;
+  --border: #b1b4b6;
+  --border-dark: #0b0c0c;
+  --accent: #1d70b8;
+  --accent-hover: #003078;
+  --text: #0b0c0c;
+  --muted: #505a5f;
+  --success-bg: #cce2d8;
+  --success-text: #005a30;
+  --error-bg: #f6d7d2;
+  --error-text: #942514;
+  --focus: #ffdd00;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: "GDS Transport", Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* Card — plain bordered box */
+.card {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 2rem;
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid transparent;
+  text-decoration: none;
+  width: 100%;
+  transition: background 0.1s;
+}
+.btn:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 0;
+}
+
+.btn-primary {
+  background: #00703c;
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 2px 0 #002d18;
+}
+.btn-primary:hover { background: #005a30; }
+.btn-primary:disabled { opacity: 0.5; cursor: not-allowed; box-shadow: none; }
+
+.btn-outline {
+  background: var(--bg);
+  color: var(--text);
+  border-color: var(--border-dark);
+  box-shadow: 0 2px 0 var(--border-dark);
+}
+.btn-outline:hover { background: var(--surface); }
+
+/* Form inputs */
+.input {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid var(--border-dark);
+  background: var(--bg);
+  color: var(--text);
+  outline: none;
+  appearance: none;
+  border-radius: 0;
+}
+.input:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px var(--border-dark);
+}
+
+.select {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid var(--border-dark);
+  background: var(--bg);
+  color: var(--text);
+  border-radius: 0;
+  outline: none;
+}
+.select:focus {
+  outline: 3px solid var(--focus);
+  outline-offset: 0;
+}
+
+.label {
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 0.25rem;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 0.25rem; margin-bottom: 1rem; }
+
+/* Messages */
+.error-msg {
+  background: var(--error-bg);
+  border-left: 4px solid #b10e1e;
+  color: var(--error-text);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.success-msg {
+  background: var(--success-bg);
+  border-left: 4px solid #005a30;
+  color: var(--success-text);
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* Badges — neutral tags */
+.badge {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--border-dark);
+  background: var(--surface);
+  color: var(--text);
+}
+.badge-teacher { background: #d2e2f1; border-color: #1d70b8; color: #1d70b8; }
+.badge-student { background: #cce2d8; border-color: #005a30; color: #005a30; }
+.badge-admin   { background: #fff7bf; border-color: #594d00; color: #594d00; }
+
+.divider { height: 1px; background: var(--border); margin: 1.5rem 0; }
+
+/* Layout */
+.page-center {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+  padding-top: 4rem;
+}
+
+.form-card { width: 100%; max-width: 480px; }
+
+/* Nav bar */
+.nav {
+  background: #0b0c0c;
+  padding: 0.75rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 4px solid #1d70b8;
+}
+.nav-brand {
+  font-weight: 700;
+  font-size: 1rem;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+/* Tables */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+.table th {
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  background: var(--surface);
+  border-bottom: 2px solid var(--border-dark);
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.table td {
+  padding: 0.65rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.table tr:last-child td { border-bottom: none; }
+
+.result-allowed { color: #005a30; font-weight: 700; }
+.result-denied  { color: #b10e1e; font-weight: 700; }
+
+/* Upload zone */
+.upload-zone {
+  border: 2px dashed var(--border-dark);
+  padding: 2rem;
+  text-align: center;
+  cursor: pointer;
+  color: var(--muted);
+  background: var(--surface);
+}
+.upload-zone:hover {
+  background: #e8e8e8;
+  color: var(--text);
+}
