@@ -1,10 +1,11 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { login } from "@/lib/api";
 
-export default function LoginPage() {
+// Inner component using useSearchParams — must be inside <Suspense>
+function LoginForm() {
   const router = useRouter();
   const params = useSearchParams();
   const [form, setForm] = useState({ email: "", password: "" });
@@ -14,7 +15,6 @@ export default function LoginPage() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    // Clear any stale access token so it doesn't interfere with the new login
     localStorage.removeItem("zets_token");
     if (params.get("registered")) setInfo("Account created. Sign in and set up two-factor authentication.");
     if (params.get("expired")) setError("Your session has expired. Please sign in again.");
@@ -100,5 +100,14 @@ export default function LoginPage() {
         </Link>
       </p>
     </div>
+  );
+}
+
+// Page wraps the form in Suspense (required by Next.js 14 for useSearchParams)
+export default function LoginPage() {
+  return (
+    <Suspense fallback={<div style={{ padding: "3rem 1.5rem", color: "#505a5f" }}>Loading…</div>}>
+      <LoginForm />
+    </Suspense>
   );
 }
