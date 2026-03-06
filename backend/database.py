@@ -1,4 +1,4 @@
-from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker  # v2
 from sqlalchemy.orm import DeclarativeBase
 from config import DATABASE_URL
 
